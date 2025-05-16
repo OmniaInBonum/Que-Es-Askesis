@@ -180,6 +180,7 @@
                         
                         <h3 class="font-roboto text-2xl font-bold text-askesis-dark pt-4"><i class="fas fa-user-tie mr-2 text-askesis-blue"></i> Detrás de Askesis: Luis Patricio Ruiz Ruiz</h3>
                         <p>Con formación como <strong class="text-askesis-dark">Técnico Deportivo Universitario</strong> y una especialización en <strong class="text-askesis-dark">Entrenamiento, Musculación y Prescripción de Ejercicio Físico</strong>, mi pasión es traducir la complejidad de la fisiología, la biomecánica y la teoría del entrenamiento en planes prácticos y efectivos para ti.</p>
+                        <p class="mb-2">Mi trayectoria se complementa con <strong class="text-askesis-green">10 años como atleta</strong>, con destacada participación en eventos nacionales y regionales de <strong class="text-askesis-dark">Calistenia y Street Workout en Chile</strong>. Esta experiencia práctica enriquece profundamente mi enfoque científico, permitiéndome entender de primera mano los desafíos y triunfos del camino atlético.</p>
                         <p>Además de diseñar programas, me dedico a la <strong class="text-askesis-green">creación de contenido educativo</strong> claro y preciso para estudiantes y profesionales del área, asegurando que la ciencia sea accesible y aplicable.</p>
                     </div>
                 </div>
@@ -388,9 +389,9 @@
                 prevButton.disabled = currentSlide === 0;
                 
                 if (currentSlide === totalSlides - 1) {
-                    nextButton.classList.add('hidden'); // Ocultar "Siguiente" en el último slide
-                    completionContainer.classList.remove('hidden'); // Mostrar botón de reinicio
-                    navigationButtonsContainer.classList.add('sm:justify-start'); // Alinear botón "Anterior" a la izquierda
+                    nextButton.classList.add('hidden'); 
+                    completionContainer.classList.remove('hidden'); 
+                    navigationButtonsContainer.classList.add('sm:justify-start'); 
                     navigationButtonsContainer.classList.remove('sm:justify-between', 'sm:justify-center');
 
 
@@ -399,9 +400,9 @@
                     completionContainer.classList.add('hidden');
                     navigationButtonsContainer.classList.remove('sm:justify-start');
                     navigationButtonsContainer.classList.add('sm:justify-between');
-                     if(currentSlide === 0) { // Si es el primer slide
+                     if(currentSlide === 0) { 
                         navigationButtonsContainer.classList.remove('sm:justify-between');
-                        navigationButtonsContainer.classList.add('sm:justify-end'); // Alinear "Siguiente" a la derecha
+                        navigationButtonsContainer.classList.add('sm:justify-end'); 
                     } else {
                         navigationButtonsContainer.classList.remove('sm:justify-end');
                         navigationButtonsContainer.classList.add('sm:justify-between');
@@ -411,20 +412,17 @@
                 if (scrollToSlide) {
                     const targetSlideElement = document.getElementById(`slide-${currentSlide}`);
                     if (targetSlideElement) {
-                         // Scroll to the top of the main navigation, then to the slide
                         const mainNav = document.getElementById('main-nav');
                         if (mainNav) {
                             mainNav.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            // Add a slight delay for the second scroll to ensure the first one is somewhat processed
                             setTimeout(() => {
                                 targetSlideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }, 100); // Adjust delay if needed
+                            }, 100); 
                         } else {
                              targetSlideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                     }
                 }
-                 // Update active nav link
                 navLinks.forEach(link => {
                     link.classList.remove('bg-askesis-blue', 'text-white');
                     link.classList.add('text-gray-200');
@@ -463,14 +461,13 @@
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1); // Remove #
+                    const targetId = link.getAttribute('href').substring(1); 
                     const targetSlideIndex = Array.from(slides).findIndex(s => s.id === targetId);
                     if (targetSlideIndex !== -1) {
                         currentSlide = targetSlideIndex;
-                        updateSlideDisplay(false); // Don't scroll here, let the href do its job or manage separately
+                        updateSlideDisplay(false); 
                          const targetElement = document.getElementById(targetId);
                         if(targetElement) {
-                            // Scroll to main nav first
                             const mainNav = document.getElementById('main-nav');
                             if (mainNav) {
                                 mainNav.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -495,7 +492,7 @@
             });
             
             if (totalSlides > 0) {
-                updateSlideDisplay(false); // Initial display without scroll
+                updateSlideDisplay(false); 
             } else {
                 console.warn("Advertencia: No se encontraron slides en la presentación.");
             }
